@@ -16,13 +16,8 @@ Open the configuration file located in the main folder `config.js`.
 module.exports = {
     app: {
         token: 'XXX',
-<<<<<<< HEAD
         playing: 'Bot by Safasfly'
-=======
-        playing: 'by Zerio ❤️',
-        global: true,
-        guild: 'xxx'
->>>>>>> 15cd70e740c7a7297ce72d61c1cbd1b48182b5e5
+
     },
 
     opt: {
