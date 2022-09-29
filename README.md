@@ -17,7 +17,7 @@ module.exports = {
     app: {
         px: 'XXX',
         token: 'XXX',
-        playing: 'by Zerio ❤️'
+        playing: 'Bot by Safasfly'
     },
 
     opt: {
