@@ -1,16 +1,8 @@
 const { EmbedBuilder } = require('discord.js');
+module.exports = async ({ client, inter, queue }) => { 
+    if (!queue || !queue.playing) return inter.reply({ content: `No music currently playing... try again ? ❌`, ephemeral: true });
 
-module.exports = {
-    name: 'queue',
-    description: 'Get the songs in the queue',
-    voiceChannel: true,
-
-    execute({ client, inter }) {
-        const queue = player.getQueue(inter.guildId);
-
-        if (!queue) return inter.reply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
-
-        if (!queue.tracks[0]) return  inter.reply({ content: `No music in the queue after the current one ${inter.member}... try again ? ❌`, ephemeral: true });
+    if (!queue.tracks[0]) return  inter.reply({ content: `No music in the queue after the current one ${inter.member}... try again ? ❌`, ephemeral: true });
 
         const methods = ['', '🔁', '🔂'];
 
@@ -20,10 +12,6 @@ module.exports = {
 
         const tracks = queue.tracks.map((track, i) => `**${i + 1}** - ${track.title} | ${track.author} (requested by : ${track.requestedBy.username})`)
 
-<<<<<<< HEAD
-        embed.setTimestamp();
-        embed.setFooter('Bot by Safasfly', message.author.avatarURL({ dynamic: true }));
-=======
         const embed = new EmbedBuilder()
         .setColor('#ff0000')
         .setThumbnail(inter.guild.iconURL({ size: 2048, dynamic: true }))
@@ -31,8 +19,6 @@ module.exports = {
         .setDescription(`Current ${queue.current.title}\n\n${tracks.slice(0, 5).join('\n')}\n\n${nextSongs}`)
         .setTimestamp()
         .setFooter({ text: 'Music comes first - Made with heart by Zerio ❤️', iconURL: inter.member.avatarURL({ dynamic: true })})
->>>>>>> 15cd70e740c7a7297ce72d61c1cbd1b48182b5e5
 
-        inter.reply({ embeds: [embed] });
-    },
-};
+        inter.reply({ embeds: [embed], ephemeral: true });
+}
